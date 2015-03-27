@@ -29,6 +29,41 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# My stuff
+gem 'newrelic_rpm'
+
+# for design
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'autoprefixer-rails'
+gem 'font-awesome-rails', '~> 4.3.0.0'
+
+# Upload Files
+gem 'paperclip', '~> 4.2.1'
+gem 'aws-sdk', '< 2.0'
+
+
+# Backend
+gem 'devise', '~> 3.4.1'
+gem 'activeadmin', github: 'activeadmin', branch: 'master'
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'master'
+gem 'better_errors', '~> 2.1.1'
+gem 'binding_of_caller', '~> 0.7.2'
+gem 'awesome_print', '~> 1.6.1'
+gem "figaro"
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'will_paginate', '~> 3.0.6'
+gem 'simple_form'
+# gem 'carmen-rails'
+gem 'country_select', github: 'stefanpenner/country_select'
+gem 'arbre', '~> 1.0.3'
+gem "cocoon"
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+# My Stuff ends
+
+
+
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -41,6 +76,10 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+
 end
 
 ruby "2.2.0"
