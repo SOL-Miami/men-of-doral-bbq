@@ -5,10 +5,27 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    <div class="container">
+    <div class="row">
+      <nav class=" regular_buttons pull-left">
+        <%= link_to 'Home', main_app.root_path %> 
+      </nav>
+      <nav class="sign_in_buttons pull-right">
+        <% if user_signed_in? %>
+          <%= link_to current_user.email, main_app.edit_user_registration_path %>
+          | <%= link_to "Sign out", main_app.destroy_user_session_path, :method => :delete %>
+        <% else %>
+          <%= link_to "Sign up", main_app.new_user_registration_path %>
+          | <%= link_to "Sign in", main_app.new_user_session_path %>
+        <% end %>
+      </nav>
+    </div>
+  </div>
 </head>
 <body>
-
-<%= yield %>
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>
