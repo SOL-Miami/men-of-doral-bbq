@@ -3,34 +3,50 @@
 
 
 <div id="contact">
-  <h2>Contact Us</h2>
-  <%= simple_form_for Contact.new, html: { novalidate: true }, remote: true do |f| %>
-    <%= f.error_notification %>
-    <div class="form-inputs">
-      <div class="row">
-        <div class="col-xs-12">
-          <%= f.input :name, label: false, placeholder: "Name" %>
+  <div class="contact_form_hidden" style="display:none;">
+    <h2>Thanks</h2>
+  </div>
+  <div class="contact_form_shown">
+    <h2>Contact Us</h2>
+    <%= simple_form_for Contact.new, html: { novalidate: true }, remote: true do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-xs-12">
+            <%= f.input :name, label: false, placeholder: "Name" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <%= f.input :email, label: false, placeholder: "Email"  %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <%= f.input :phone_number, label: false, placeholder: "Phone Number"  %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <%= f.input :message, label: false, placeholder: "Message"  %>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <%= f.input :email, label: false, placeholder: "Email"  %>
-        </div>
+      <div class="form-actions">
+        <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit"  %>
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <%= f.input :phone_number, label: false, placeholder: "Phone Number"  %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <%= f.input :message, label: false, placeholder: "Message"  %>
-        </div>
-      </div>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
+
+
+
+<script type="text/javascript">
+  $('#person_create_form_submit').closest('form').on('ajax:success', function() {
+    $(".contact_form_shown").hide(200)
+    $(".contact_form_hidden").show(200)
+    console.log('ajax:success!');
+  })
+</script>
 
