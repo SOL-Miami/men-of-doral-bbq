@@ -1,1 +1,22 @@
 <h1>Home</h1>
+
+<div id="contact_form">
+  <%= simple_form_for(Contact.new, :url => url_for(:action => 'create', 
+                          :controller => 'contact'),
+                          :method => 'post') do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-xs-6">
+          <%= f.input :name, label: false, placeholder: "First Name" %>
+        </div>
+        <div class="col-xs-6">
+          <%= f.input :email, label: false, placeholder: "email"  %>
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit" %>
+    </div>
+  <% end %>
+</div>

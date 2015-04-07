@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
+  
   ActiveAdmin.routes(self)
+
+  resources :contact
 
   HighVoltage.configure do |config|
     config.home_page = 'home'
