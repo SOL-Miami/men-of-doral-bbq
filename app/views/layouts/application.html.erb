@@ -8,7 +8,8 @@
     <div class="container">
     <div class="row">
       <nav class=" regular_buttons pull-left">
-        <%= link_to 'Home', main_app.root_path %> 
+        <%= link_to 'Home', main_app.root_path %> |
+        <%= link_to 'Team Registrations', team_registrations_path %> 
       </nav>
       <nav class="sign_in_buttons pull-right">
         <% if user_signed_in? %>
