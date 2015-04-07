@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team name:</strong>
+  <%= @team_registration.team_name %>
+</p>
+
+<p>
+  <strong>Captain name:</strong>
+  <%= @team_registration.captain_name %>
+</p>
+
+<p>
+  <strong>Captain email:</strong>
+  <%= @team_registration.captain_email %>
+</p>
+
+<p>
+  <strong>Team members:</strong>
+  <%= @team_registration.team_members %>
+</p>
+
+<%= link_to 'Edit', edit_team_registration_path(@team_registration) %> |
+<%= link_to 'Back', team_registrations_path %>

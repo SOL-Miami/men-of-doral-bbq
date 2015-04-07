@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Team Registrations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team name</th>
+      <th>Captain name</th>
+      <th>Captain email</th>
+      <th>Team members</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team_registrations.each do |team_registration| %>
+      <tr>
+        <td><%= team_registration.team_name %></td>
+        <td><%= team_registration.captain_name %></td>
+        <td><%= team_registration.captain_email %></td>
+        <td><%= team_registration.team_members %></td>
+        <td><%= link_to 'Show', team_registration %></td>
+        <td><%= link_to 'Edit', edit_team_registration_path(team_registration) %></td>
+        <td><%= link_to 'Destroy', team_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Team registration', new_team_registration_path %>

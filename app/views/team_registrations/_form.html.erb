@@ -1,0 +1,14 @@
+<%= simple_form_for(@team_registration) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :team_name %>
+    <%= f.input :captain_name %>
+    <%= f.input :captain_email %>
+    <%= f.input :team_members %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
