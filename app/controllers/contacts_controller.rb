@@ -1,4 +1,4 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
 
@@ -61,7 +61,7 @@ class ContactController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def contact_params
-      params.require(:contact).permit()
+      params.require(:contact).permit(:name, :email, :phone_number, :message)
     end
 end
-end
+

@@ -1,17 +1,30 @@
 <h1>Home</h1>
 
-<div id="contact_form">
-  <%= simple_form_for(Contact.new, :url => url_for(:action => 'create', 
-                          :controller => 'contact'),
-                          :method => 'post') do |f| %>
+
+
+<div id="contact">
+  <h2>Contact Us</h2>
+  <%= simple_form_for Contact.new, html: { novalidate: true }, remote: true do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
       <div class="row">
-        <div class="col-xs-6">
-          <%= f.input :name, label: false, placeholder: "First Name" %>
+        <div class="col-xs-12">
+          <%= f.input :name, label: false, placeholder: "Name" %>
         </div>
-        <div class="col-xs-6">
-          <%= f.input :email, label: false, placeholder: "email"  %>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= f.input :email, label: false, placeholder: "Email"  %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= f.input :phone_number, label: false, placeholder: "Phone Number"  %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <%= f.input :message, label: false, placeholder: "Message"  %>
         </div>
       </div>
     </div>
@@ -20,3 +33,4 @@
     </div>
   <% end %>
 </div>
+

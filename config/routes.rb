@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   ActiveAdmin.routes(self)
 
-  resources :contact
+  resources :contacts
 
   HighVoltage.configure do |config|
     config.home_page = 'home'
