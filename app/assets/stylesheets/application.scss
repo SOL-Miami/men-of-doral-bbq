@@ -1,4 +1,5 @@
 $brown: #5C2E23;
+$gray: #58585a;
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -8,7 +9,9 @@ body {
   overflow-x: hidden;
 }
 h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
-
+.space50{
+  margin-top: 50px;
+}
 .form-control:focus {
   border-color: #5C2E23;
   outline: 0;
@@ -21,6 +24,7 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   &:hover {
     color: $brown;
     background: rgb(224, 215, 198);
+    border: #e0d7c6;
   }
 }
 
@@ -76,7 +80,7 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
 
 .newsletter {
   text-align: center;
-  padding: 25px 0 50px;
+  padding: 35px 0 55px;
   background: #fafafa;
   h3 {
     font-weight: 700;
@@ -84,5 +88,25 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   }
   p {
     font-weight: 300;
+  }
+}
+
+.about {
+  padding: 100px 0;
+  text-align: center;
+  h1 {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  hr {
+    border-top: 2px solid #5C2E23;
+    width: 150px;
+  }
+  .stats {
+    h1 {
+      font-size: 20px;
+      font-weight: 300;
+      color: $gray;
+    }
   }
 }
