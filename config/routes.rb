@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   resources :team_registrations
   resources :contacts
+  resources :newsletters
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
 
 
-  get "/pages/*id" => 'pages#thank_you', as: :page, format: false
-  
+  # get "/pages/*id" => 'pages#thank_you', as: :page, format: false
+
   HighVoltage.configure do |config|
     config.home_page = 'home'
   end
