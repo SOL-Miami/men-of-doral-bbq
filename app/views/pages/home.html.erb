@@ -19,14 +19,19 @@
         <p>Subscribe to our newsletter for the latest updates on What Is A Man?</p>
         <div class="col-sm-6 col-sm-offset-3">
           <%= simple_form_for Newsletter.new, html: { novalidate: true }, remote: true do |f| %>
-            <div class="col-sm-4">
-              <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control'} %>
+            <div class="news">
+              <div class="col-sm-4">
+                <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control'} %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+              </div>
+              <div class="col-sm-4">
+                <%= f.button :submit, :name => 'commit', :id=>"news_create_form_submit", class: 'btn btn-default'  %>
+              </div>
             </div>
-            <div class="col-sm-4">
-              <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
-            </div>
-            <div class="col-sm-4">
-              <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit", class: 'btn btn-default'  %>
+            <div class="news_thank_you" style="display:none;">
+              <h3>Thank you for Subscribing!</h3>
             </div>
           <% end %>
         </div>
@@ -69,18 +74,16 @@
             <h1>70% of adults serving long-term prison sentences</h1>
           </div>
         </div>
+        <div class="space50"></div>
+        <h1>More Information Coming Soon!</h1>
       </div>
     </div>
   </div>
-
-
-
 </section>
 
 
 
-<section>
-  <h1>Home</h1>
+<!-- <section>
   <div id="contact">
     <div class="contact_form_hidden" style="display:none;">
       <h2>Thanks</h2>
@@ -117,15 +120,21 @@
       <% end %>
     </div>
   </div>
-</section>
+</section> -->
 
 
 
 
-<%= link_to 'New Team registration', new_team_registration_path %>
+
 
 
 <script type="text/javascript">
+  $('#news_create_form_submit').closest('form').on('ajax:success', function() {
+    $(".news").hide(200)
+    $(".news_thank_you").show(200)
+    console.log('ajax:success!');
+  })
+
   $('#person_create_form_submit').closest('form').on('ajax:success', function() {
     $(".contact_form_shown").hide(200)
     $(".contact_form_hidden").show(200)
