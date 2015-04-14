@@ -14,7 +14,7 @@ class TeamRegistrationsController < InheritedResources::Base
         format.js   { render json: @team_registration.errors, status: :unprocessable_entity }
       end
     end
-    
+
     Stripe.api_key = Rails.application.secrets.stripe["secret_key"]
     token = params[:stripeToken]
     email = params['team_registration']['captain_email']
@@ -29,6 +29,7 @@ class TeamRegistrationsController < InheritedResources::Base
     rescue Stripe::CardError => e
       # The card has been declined
     end
+    redirect_to page_path('thank_you')
   end
 
   private
@@ -37,4 +38,3 @@ class TeamRegistrationsController < InheritedResources::Base
       params.require(:team_registration).permit(:team_name, :captain_name, :captain_email, :team_members, :stripeToken)
     end
 end
-
