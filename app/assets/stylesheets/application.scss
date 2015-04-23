@@ -4,6 +4,7 @@ $gray: #58585a;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "animate";
 
 body {
   overflow-x: hidden;
@@ -122,4 +123,9 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   p {
     font-weight: 300;
   }
+}
+
+
+.add-top-margin{
+  margin-top: 4px;
 }

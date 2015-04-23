@@ -92,6 +92,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    animate-rails (1.0.7)
+      rails
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.0)
@@ -148,6 +150,8 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.23)
       unf (>= 0.0.5, < 1.0.0)
+    email_validator (1.5.0)
+      activemodel
     erubis (2.7.0)
     execjs (2.5.0)
     figaro (1.1.0)
@@ -303,6 +307,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  animate-rails
   arbre (~> 1.0.3)
   autoprefixer-rails
   awesome_print
@@ -316,6 +321,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   country_select!
   devise (~> 3.4.1)
+  email_validator
   figaro
   font-awesome-rails (~> 4.3.0.0)
   high_voltage (~> 2.2.1)

@@ -37,6 +37,8 @@ gem 'arbre', '~> 1.0.3'
 gem "cocoon"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'high_voltage', '~> 2.2.1'
+gem "animate-rails"
+gem 'email_validator'
 
 group :development, :test do
   gem "awesome_print"
