@@ -82,48 +82,113 @@
 <section class="contact">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
+      <div class="center">
         <h2>Contact Us</h2>
         <p>For more information about this event please fill out form below.</p>
-        <div class="col-sm-6 col-sm-offset-3">
-          <%= simple_form_for Contact.new, remote: true, html: {class: "animated"} do |f| %>
-          <%= f.error_notification %>
-            <div class="contact">
+        <%= simple_form_for Contact.new, remote: true, html: {class: "animated"} do |f| %>
+        <%= f.error_notification %>
+          <div class="contact">
+            <div class="col-sm-4 col-sm-offset-4">
               <div class="row">
-                <div class="row">
-                  <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control add-top-margin'} %>
-                </div>
-                <div class="row">
-                  <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control add-top-margin'} %>
-                </div>
-                <div class="row">
-                  <%= f.input :phone_number, label: false, placeholder: "Phone Number", input_html: {class: 'form-control add-top-margin'} %>
-                </div>
-                <div class="row">
-                  <%= f.input :message, label: false, placeholder: "Message", input_html: {class: 'form-control add-top-margin'}  %>
-                </div>
+                <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control add-top-margin'} %>
+              </div>
+              <div class="row">
+                <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control add-top-margin'} %>
+              </div>
+              <div class="row">
+                <%= f.input :phone_number, label: false, placeholder: "Phone Number", input_html: {class: 'form-control add-top-margin'} %>
+              </div>
+              <div class="row">
+                <%= f.input :message, label: false, placeholder: "Message", input_html: {class: 'form-control add-top-margin'}  %>
               </div><br>
               <div class="row">
                 <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit", class: 'btn btn-default'  %>
               </div>
             </div>
-            <div class="contact_form_hidden" style="display:none;">
-              <h2>WE HAVE RECEIVED YOUR MESSAGE</h2><p>A REPRESENTATIVE WILL CONTACT YOU SHORTLY</p>
-            </div>
-          <% end %>
-        </div>
+          </div>
+          <div class="contact_form_hidden" style="display:none;">
+            <h2>WE HAVE RECEIVED YOUR MESSAGE</h2><p>A REPRESENTATIVE WILL CONTACT YOU SHORTLY</p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </section>
+
+<section class="team_registration">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="center">
+        <div class="row">
+          <h2>Register A Team</h2>
+          <p>A team consists of max 4 people!</p>
+        </div>
+        <div class="row">
+          <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#team_registration"}) do %>
+            <%= content_tag(:strong, 'Sign Up!') %>
+          <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="advertisement-packages">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="center">
+        <div class="row">
+          <h2>Sign Up for a Advertisement Package</h2>
+          <p>Choose from three availible options</p>
+        </div>
+        <div class="row">
+          <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+            <%= content_tag(:strong, 'Package') %>
+          <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="team_registration" tabindex="-1" role="dialog" aria-labelledby="team_registration_form" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="team_registration_form">Team Registration</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "team_registrations/form", object: TeamRegistration.new %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="advertisement_package" tabindex="-1" role="dialog" aria-labelledby="advertisement_package_form" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="advertisement_package_form">Adverisment Package</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "advertistment_packages/form", object: AdvertistmentPackage.new %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script type="text/javascript">
 // Contact Form Validations
-  $("#new_contact").validate({
-  rules: {
-    "contact[name]": {required: true},
-    "contact[email]": {email:true, required: true},
-    "contact[phone_number]": {required: true, digits: true, minlength: 10}
-  }
+  $('#new_newsletter').validate()
+  $("#new_contact").validate()
+  $("#new_team_registration").validate()
+  $("#new_advertistment_package").validate()
 </script>
 
 <script type="text/javascript">
@@ -145,3 +210,4 @@
     $(this).addClass('shake');
   })
 </script>
+

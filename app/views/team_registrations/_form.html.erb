@@ -1,70 +1,66 @@
-<%= simple_form_for(@team_registration) do |f| %>
+<%= simple_form_for TeamRegistration.new, remote: true do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :team_name %>
-    <%= f.input :captain_name %>
-    <%= f.input :captain_email %>
-    <%= f.input :team_members, collection: 1..4, as: :radio_buttons %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.input :team_name, label: false, placeholder: "Team Name", input_html: {class: 'form-control add-top-margin'} %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.input :team_members, collection: 1..4, as: :radio_buttons, :item_wrapper_class => 'inline add-top-margin' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.input :captain_name, label: false, placeholder: "Captain Name", input_html: {class: 'form-control add-top-margin'} %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.input :captain_email, label: false, placeholder: "Captain Email", input_html: {class: 'form-control add-top-margin'} %>
+       </div>
+    </div>
   </div>
-
-  <!-- <div class="form-actions">
-    <%#= f.button :submit %>
-  </div> -->
-
-
-  
-  <input type="hidden" id="stripe_pub" name="stripe" size="20" value="<%= Rails.application.secrets.stripe["public_key"] %>" /> 
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input type="hidden" id="stripe_pub" name="stripe" size="20" value="<%= ENV["stripe_public_key"] %>" /> 
   <div class="row">
     <div class="col-xs-12">
       <%= text_field_tag :card_number, nil, 
                           name: nil, 
                           placeholder: "Credit Card Number", 
-                          :class=> "form-control input-md-3" %>
+                          :class=> "form-control input-md-3 add-top-margin" %>
     </div>
   </div>
   <div class="row">
       <div class="col-xs-4 field">
         <%= select_month nil, {add_month_numbers: true}, 
-                              {:class=> "datepicker form-control input-md-1", 
+                              {:class=> "datepicker form-control input-md-1 add-top-margin", 
                                name: nil, 
                                id: "card_month", 
                                label: false} %>
       </div>
       <div class="col-xs-3 field">
         <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, 
-                             {:class=> "datepicker form-control input-md-1", 
+                             {:class=> "datepicker form-control input-md-1 add-top-margin", 
                               name: nil, 
                               id: "card_year"} %>
       </div>
       <div class="col-xs-5 field">
-        <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV",class: "form-control input-md-3" %>
+        <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV",class: "form-control input-md-3 add-top-margin" %>
       </div>
     </div>
   <br>
-  <%#= button_tag(type: 'submit', id: "custom_button", onclick: "submitStripe();",:class=> "btn btn-lg btn-primary btn-block form-signin-btn", 
-                 data: {confirm: 'Ready to Submit?'}) do %>
-    <!-- <i class="icon-ok icon-white bank_save"></i> -->
-    <!-- <span><%#= "Pay #{number_to_currency(Settings.stripe.background_price/100)}" %></span> -->
-  <%# end %>
-
   <div class="row">
     <div class="col-xs-12">
-      <a id="stripe-submit" class="btn btn-lg btn-primary btn-block form-signin-btn" onclick="submitStripe();">Submit</a>
+      <a id="stripe-submit" class="btn btn-lg btn-primary btn-block form-signin-btn btn-default" onclick="submitStripe();">Submit</a>
     </div>
   </div>
 <% end %>
 
-
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript">
-  Stripe.setPublishableKey(<%#= Rails.application.secrets.stripe["public_key"] %>);
-</script>
 
 <script type="text/javascript">
   var stripeResponseHandler = function(status, response) {
   var token;
-  var form = $("form");
+  var form = $('#stripe-submit').closest('form');
     
     if (response.error) {
       $(".modal-body #stripe_error").text(response.error.message);
