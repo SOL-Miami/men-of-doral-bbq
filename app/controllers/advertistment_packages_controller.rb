@@ -15,7 +15,7 @@ class AdvertistmentPackagesController < InheritedResources::Base
       end
     end
 
-    Stripe.api_key = Rails.application.secrets.stripe["secret_key"]
+    Stripe.api_key = ENV["stripe_secret_key"]
     token = params[:stripeToken]
     email = params['advertistment_package']['email']
     begin
@@ -23,7 +23,7 @@ class AdvertistmentPackagesController < InheritedResources::Base
         :amount => params['advertistment_package']['package'],
         :currency => "usd",
         :card => token,
-        :description => Rails.application.secrets.stripe["registration_description"],
+        :description => "Advertistment Package",
         :receipt_email => email
       )
     rescue Stripe::CardError => e

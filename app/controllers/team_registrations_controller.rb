@@ -15,15 +15,15 @@ class TeamRegistrationsController < InheritedResources::Base
       end
     end
 
-    Stripe.api_key = Rails.application.secrets.stripe["secret_key"]
+    Stripe.api_key = ENV["stripe_secret_key"]
     token = params[:stripeToken]
     email = params['team_registration']['captain_email']
     begin
       charge = Stripe::Charge.create(
-        :amount => Rails.application.secrets.stripe["registration_price"],
+        :amount => ENV["stripe_registration_price"],
         :currency => "usd",
         :card => token,
-        :description => Rails.application.secrets.stripe["registration_description"],
+        :description => "Team Registration",
         :receipt_email => email
       )
     rescue Stripe::CardError => e

@@ -1,6 +1,6 @@
 class AdvertistmentPackage < ActiveRecord::Base
-  PACKAGES = {"Platinum/Under": Rails.application.secrets.stripe["platinum_package"], 
-              "Gold": Rails.application.secrets.stripe["gold_package"],
-              "Silver": Rails.application.secrets.stripe["silver_package"]
+  PACKAGES = {"Platinum/Under": ENV["stripe_platinum_package"], 
+              "Gold": ENV["stripe_gold_package"],
+              "Silver": ENV["stripe_silver_package"]
              }
 end
