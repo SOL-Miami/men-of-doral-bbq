@@ -29,6 +29,7 @@ class ContactsController < ApplicationController
         format.json { render action: 'show', status: :created, location: @contact }
         # added:
         format.js   { render :nothing => true, status: :created, location: @contact }
+        ContactMailer.contact_email(@contact).deliver_now
       else
         format.html { render action: 'new' }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
