@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :advertistment_packages
-
   resources :team_registrations
   resources :contacts
   resources :newsletters
