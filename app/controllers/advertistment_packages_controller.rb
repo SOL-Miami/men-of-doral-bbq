@@ -17,10 +17,10 @@ class AdvertistmentPackagesController < InheritedResources::Base
 
     Stripe.api_key = Rails.application.secrets.stripe["secret_key"]
     token = params[:stripeToken]
-    email = params['advertisment_package']['email']
+    email = params['advertistment_package']['email']
     begin
       charge = Stripe::Charge.create(
-        :amount => params['advertisment_package']['package'],
+        :amount => params['advertistment_package']['package'],
         :currency => "usd",
         :card => token,
         :description => Rails.application.secrets.stripe["registration_description"],

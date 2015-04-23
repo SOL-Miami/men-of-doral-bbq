@@ -7,10 +7,96 @@
     <%= f.input :last_name %>
     <%= f.input :email %>
     <%= f.input :phone %>
-    <%= f.input :package, collection: PACKAGES, as: :radio_buttons %>
+    <%= f.input :package, collection: AdvertistmentPackage::PACKAGES, as: :radio_buttons %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+<!--   <div class="form-actions">
+    <%#= f.button :submit %>
+  </div>
+<%# end %> -->
+
+ <input type="hidden" id="stripe_pub" name="stripe" size="20" value="<%= Rails.application.secrets.stripe["public_key"] %>" /> 
+  <div class="row">
+    <div class="col-xs-12">
+      <%= text_field_tag :card_number, nil, 
+                          name: nil, 
+                          placeholder: "Credit Card Number", 
+                          :class=> "form-control input-md-3" %>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-xs-4 field">
+        <%= select_month nil, {add_month_numbers: true}, 
+                              {:class=> "datepicker form-control input-md-1", 
+                               name: nil, 
+                               id: "card_month", 
+                               label: false} %>
+      </div>
+      <div class="col-xs-3 field">
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, 
+                             {:class=> "datepicker form-control input-md-1", 
+                              name: nil, 
+                              id: "card_year"} %>
+      </div>
+      <div class="col-xs-5 field">
+        <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV",class: "form-control input-md-3" %>
+      </div>
+    </div>
+  <br>
+  <%#= button_tag(type: 'submit', id: "custom_button", onclick: "submitStripe();",:class=> "btn btn-lg btn-primary btn-block form-signin-btn", 
+                 data: {confirm: 'Ready to Submit?'}) do %>
+    <!-- <i class="icon-ok icon-white bank_save"></i> -->
+    <!-- <span><%#= "Pay #{number_to_currency(Settings.stripe.background_price/100)}" %></span> -->
+  <%# end %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <a id="stripe-submit" class="btn btn-lg btn-primary btn-block form-signin-btn" onclick="submitStripe();">Submit</a>
+    </div>
   </div>
 <% end %>
+
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey(<%#= Rails.application.secrets.stripe["public_key"] %>);
+</script>
+
+<script type="text/javascript">
+  var stripeResponseHandler = function(status, response) {
+  var token;
+  var form = $("form");
+    
+    if (response.error) {
+      $(".modal-body #stripe_error").text(response.error.message);
+      $(".modal-body #stripe-submit").prop("disabled", false).removeClass('btn-warning disabled').text('Submit Again');
+    } else {
+      token = response.id;
+      console.log(token);
+      form.append($("<input type=\"hidden\" name=\"stripeToken\" />").val(token));
+      
+      form.get(0).submit();
+    }
+  };
+
+
+    function submitStripe(){
+    Stripe.setPublishableKey($("#stripe_pub").val());
+    var card = {
+        number: $("#card_number").val(),
+        cvc: $("#card_code").val(),
+        expMonth: $("#card_month").val(),
+        expYear: $("#card_year").val()
+      };
+    Stripe.card.createToken(card, stripeResponseHandler);
+  }
+</script>
+
+
+<script type="text/javascript">
+  $('#stripe-submit').click(function(e) {
+    $(this).addClass('btn btn-lg btn-warning disabled');
+    $(this).text('Processing ...');
+    $(this).prepend('<span class=\'glyphicon glyphicon-refresh glyphicon-refresh-animate\'></span>');
+  });
+</script>
