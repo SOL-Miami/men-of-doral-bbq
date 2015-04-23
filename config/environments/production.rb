@@ -1,11 +1,4 @@
 Rails.application.configure do
-  STDOUT.sync = true
-
-  logger = Logger.new(STDOUT)
-  logger.level = 0 # Must be numeric here - 0 :debug, 1 :info, 2 :warn, 3 :error, and 4 :fatal
-  # NOTE:   with 0 you're going to get all DB calls, etc.
-
-  Rails.logger = Rails.application.config.logger = logger
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -54,6 +47,8 @@ Rails.application.configure do
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   # config.log_level = :debug
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::DEBUG
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
