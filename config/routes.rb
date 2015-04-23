@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :advertistment_packages
   resources :team_registrations
   resources :contacts
   resources :newsletters
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   end
 
   Rails.application.routes.draw do
+  resources :advertistment_packages
+
   resources :team_registrations
 
       devise_for :users, controllers: {

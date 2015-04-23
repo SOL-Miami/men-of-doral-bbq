@@ -5,7 +5,7 @@ class TeamRegistrationsController < InheritedResources::Base
     @team_registration = TeamRegistration.new(team_registration_params)
     respond_to do |format|
       if @team_registration.save
-        format.html { redirect_to @team_registration, notice: 'Team Registration was successfully created.' }
+        format.html { redirect_to page_path('thank_you'), notice: 'Team Registration was successfully created.' }
         format.json { render action: 'show', status: :created, location: @team_registration }
         format.js   { render :nothing => true, status: :created, location: @team_registration }
       else
@@ -15,21 +15,20 @@ class TeamRegistrationsController < InheritedResources::Base
       end
     end
 
-    Stripe.api_key = Rails.application.secrets.stripe["secret_key"]
+    Stripe.api_key = ENV["stripe_secret_key"]
     token = params[:stripeToken]
     email = params['team_registration']['captain_email']
     begin
       charge = Stripe::Charge.create(
-        :amount => Rails.application.secrets.stripe["registration_price"],
+        :amount => ENV["stripe_registration_price"],
         :currency => "usd",
         :card => token,
-        :description => Rails.application.secrets.stripe["registration_description"],
+        :description => "Team Registration",
         :receipt_email => email
       )
     rescue Stripe::CardError => e
       # The card has been declined
     end
-    redirect_to page_path('thank_you')
   end
 
   private
