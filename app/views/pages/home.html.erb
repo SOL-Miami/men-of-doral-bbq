@@ -74,8 +74,6 @@
             <h1>70% of adults serving long-term prison sentences</h1>
           </div>
         </div>
-        <div class="space50"></div>
-        <h1>More Information Coming Soon!</h1>
       </div>
     </div>
   </div>
@@ -83,50 +81,48 @@
 
 
 
-<!-- <section>
-  <div id="contact">
-    <div class="contact_form_hidden" style="display:none;">
-      <h2>Thanks</h2>
-    </div>
-    <div class="contact_form_shown">
-      <h2>Contact Us</h2>
-      <%= simple_form_for Contact.new, html: { novalidate: true }, remote: true do |f| %>
-        <%= f.error_notification %>
-        <div class="form-inputs">
-          <div class="row">
-            <div class="col-xs-12">
-              <%= f.input :name, label: false, placeholder: "Name" %>
+<section class="contact">
+  <div class="container">
+    <div id="contact">
+      <div class="contact_form_hidden" style="display:none;">
+        <h2>WE HAVE RECEIVED YOUR MESSAGE</h2><p>A REPRESENTATIVE WILL CONTACT YOU SHORTLY</p>
+      </div>
+      <div class="contact_form_shown">
+        <h2>Contact Us</h2>
+        <p>For more information about this event please fill out form below.</p>
+        <%= simple_form_for Contact.new, html: { novalidate: true }, remote: true do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <div class="row">
+              <div class="col-xs-6 col-xs-offset-3">
+                <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control'} %>
+                <br>
+                <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+                <br>
+                <%= f.input :phone_number, label: false, placeholder: "Phone Number", input_html: {class: 'form-control'} %>
+                <br>
+                <%= f.input :message, label: false, placeholder: "Message", input_html: {class: 'form-control'}  %>
+                <br>
+                <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit", class: 'btn btn-default'  %>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= f.input :email, label: false, placeholder: "Email"  %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= f.input :phone_number, label: false, placeholder: "Phone Number"  %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <%= f.input :message, label: false, placeholder: "Message"  %>
-            </div>
-          </div>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit"  %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</section> -->
+</section>
 
 
 
-
-
-
+<script type="text/javascript">
+// Contact Form Validations
+  $("#new_contact").validate({
+  rules: {
+    "contact[name]": {required: true},
+    "contact[email]": {email:true, required: true},
+    "contact[phone_number]": {required: true, digits: true, minlength: 10}
+  }
+</script>
 
 <script type="text/javascript">
   $('#news_create_form_submit').closest('form').on('ajax:success', function() {

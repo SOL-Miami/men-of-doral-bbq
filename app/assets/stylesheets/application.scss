@@ -110,3 +110,16 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
     }
   }
 }
+
+.contact {
+  text-align: center;
+  padding: 35px 0 55px;
+  background: #fafafa;
+  h2 {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  p {
+    font-weight: 300;
+  }
+}

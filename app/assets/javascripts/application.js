@@ -14,8 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require stickybars
-//= require_tree .
+//= require jquery.validate.min
+//= require jquery-validate.bootstrap-tooltip
+
 
 
 // Scroll Function
