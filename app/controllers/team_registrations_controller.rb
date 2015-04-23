@@ -5,7 +5,7 @@ class TeamRegistrationsController < InheritedResources::Base
     @team_registration = TeamRegistration.new(team_registration_params)
     respond_to do |format|
       if @team_registration.save
-        format.html { redirect_to @team_registration, notice: 'Team Registration was successfully created.' }
+        format.html { redirect_to page_path('thank_you'), notice: 'Team Registration was successfully created.' }
         format.json { render action: 'show', status: :created, location: @team_registration }
         format.js   { render :nothing => true, status: :created, location: @team_registration }
       else
@@ -29,7 +29,6 @@ class TeamRegistrationsController < InheritedResources::Base
     rescue Stripe::CardError => e
       # The card has been declined
     end
-    redirect_to page_path('thank_you')
   end
 
   private

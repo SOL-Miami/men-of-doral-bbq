@@ -5,7 +5,7 @@
     <%= f.input :team_name %>
     <%= f.input :captain_name %>
     <%= f.input :captain_email %>
-    <%= f.input :team_members %>
+    <%= f.input :team_members, collection: 1..4, as: :radio_buttons %>
   </div>
 
   <!-- <div class="form-actions">

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @advertistment_package.company %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @advertistment_package.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @advertistment_package.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @advertistment_package.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @advertistment_package.phone %>
+</p>
+
+<p>
+  <strong>Package:</strong>
+  <%= @advertistment_package.package %>
+</p>
+
+<%= link_to 'Edit', edit_advertistment_package_path(@advertistment_package) %> |
+<%= link_to 'Back', advertistment_packages_path %>
