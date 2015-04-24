@@ -160,63 +160,26 @@
 
 
 
-<section class="contact">
+<section class="team-registration">
+  <div class="bkg"></div>
   <div class="container-fluid">
     <div class="row">
-      <div class="center">
-        <div class="contact_form_shown">
-          <h2>Contact Us</h2>
-          <p>For more information about this event please fill out form below.</p>
-          <%= simple_form_for Contact.new, remote: true, html: {class: "animated"} do |f| %>
-            <%= f.error_notification %>
-
-            <div class="col-sm-4 col-sm-offset-4">
-              <div class="row">
-                <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control add-top-margin'} %>
-              </div>
-              <div class="row">
-                <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control add-top-margin'} %>
-              </div>
-              <div class="row">
-                <%= f.input :phone_number, label: false, placeholder: "Phone Number", input_html: {class: 'form-control add-top-margin'} %>
-              </div>
-              <div class="row">
-                <%= f.input :message, label: false, placeholder: "Message", input_html: {class: 'form-control add-top-margin'}  %>
-              </div><br>
-              <div class="row">
-                <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit", class: 'btn btn-default'  %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="contact_form_hidden" style="display:none;">
-          <h2>WE HAVE RECEIVED YOUR MESSAGE</h2><p>A REPRESENTATIVE WILL CONTACT YOU SHORTLY</p>
-        </div>
+      <div class="col-xs-12">
+        <h1>Register Your Team</h1>
+        <hr>
+        <p>Lets see if your team has what it takes<br>to be the next grill master</p>
+        <br>
+        <h3>Cost per Team:</h3>
+        <p>$100</p>
+        <br>
+        <%= button_tag(type: 'button', class: "btn btn-cool", style: "margin-right:0px;", data: {toggle:"modal", target:"#team_registration"}) do %>
+          <%= content_tag(:strong, 'Sign Up!') %>
+        <% end %>
       </div>
     </div>
   </div>
 </section>
 
-<section class="team_registration">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="center">
-        <div class="row">
-          <h2>Register A Team</h2>
-          <p>A team consists of max 4 people!</p>
-        </div>
-        <div class="row">
-          <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#team_registration"}) do %>
-            <%= content_tag(:strong, 'Sign Up!') %>
-          <% end %>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Modal -->
 <div class="modal fade" id="team_registration" tabindex="-1" role="dialog" aria-labelledby="team_registration_form" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -230,6 +193,39 @@
     </div>
   </div>
 </div>
+
+<section class="contact">
+  <div class="container-fluid">
+    <div class="contact_form_shown">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Contact Us</h2>
+          <p>For more information about this event please fill out form below.</p>
+        </div>
+      </div>
+      <div class="row">
+        <%= simple_form_for Contact.new, remote: true, html: {class: "animated"} do |f| %>
+          <%= f.error_notification %>
+          <div class="col-sm-4 col-sm-offset-4">
+              <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control'} %>
+              <br>
+              <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+              <br>
+              <%= f.input :phone_number, label: false, placeholder: "Phone Number", input_html: {class: 'form-control'} %>
+              <br>
+              <%= f.input :message, label: false, placeholder: "Message", input_html: {class: 'form-control'}  %>
+              <br>
+              <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit", class: 'btn btn-default'  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="contact_form_hidden" style="display:none;">
+      <h2>WE HAVE RECEIVED YOUR MESSAGE</h2><p>A REPRESENTATIVE WILL CONTACT YOU SHORTLY</p>
+    </div>
+  </div>
+</section>
+
 
 
 <script type="text/javascript">
@@ -257,8 +253,8 @@
   })
 
   $('#person_create_form_submit').closest('form').on('ajax:success', function() {
-    $(".contact_form_shown").hide(200)
-    $(".contact_form_hidden").show(200)
+    $(".contact_form_shown").hide(300)
+    $(".contact_form_hidden").show(300)
   })
   $('#person_create_form_submit').closest('form').on('ajax:error', function() {
     $('.contact').prepend("<div><h4>Please check your submission.</h4></div>").css('color','red')

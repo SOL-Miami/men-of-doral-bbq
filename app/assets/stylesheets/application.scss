@@ -54,6 +54,15 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   }
 }
 
+.bkg {
+  position: absolute;
+  width:100%;
+  height:100%;
+  display:block;
+  background: rgba(0,0,0,0.6);
+  top: 0;
+}
+
 // .next {
 //   position: absolute;
 //   bottom: 0;
@@ -127,15 +136,6 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   -o-background-size: cover;
   background-size: cover;
   position: relative;
-  .bkg {
-    position: absolute;
-    width:100%;
-    height:100%;
-    display:block;
-    background: rgba(0,0,0,0.6);
-    top: 0;
-  }
-
   h1 {
     text-transform: uppercase;
     font-weight: 700;
@@ -165,7 +165,7 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
 }
 
 .registration {
-  padding: 100px 0;
+  padding: 75px 0 100px;
   text-align: center;
   h1 {
     font-weight: 700;
@@ -189,10 +189,41 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   }
 }
 
+.team-registration {
+  background: url(image-path("menatwork.jpg"));
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  position: relative;
+  padding: 75px 0 100px;
+  text-align: center;
+  h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+  }
+  p {
+    font-weight: 300;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: white;
+  }
+  hr {
+    border-top: 2px solid white;
+    width: 150px;
+  }
+  h3 {
+    color: white;
+  }
+}
+
 .contact {
   text-align: center;
   padding: 35px 0 55px;
-  background: #fafafa;
+  background: white;
   h2 {
     font-weight: 700;
     text-transform: uppercase;
