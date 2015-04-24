@@ -17,7 +17,7 @@
       <div class="col-sm-10 col-sm-offset-1">
         <h3>What Is A Man? Newsletter</h3>
         <p>Subscribe to our newsletter for the latest updates on What Is A Man?</p>
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
           <%= simple_form_for Newsletter.new, remote: true, html: {class: "animated"} do |f| %>
             <div class="news">
               <div class="col-sm-4">
@@ -41,43 +41,58 @@
 </section>
 
 <section class="about">
+  <div class="bkg"></div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-12">
-        <div class="row">
-          <h1>What is Men of Doral bbq challenge?</h1>
-          <hr>
-          <div class="col-sm-8 col-sm-offset-2">
-            <p>M2M is a group of Brothers, Fathers, Sons and Friends joining together to make a difference in their community through men. Using the power of community and communication, we provide literature and fellowship as a way of combating the issue of broken families impacting our community and our country.</p>
-          </div>
-        </div>
-        <div class="space50"></div>
-        <div class="row stats">
-          <div class="col-sm-2 col-sm-offset-1">
-            <%= image_tag 'handcuffs.png', class: 'img-responsive' %>
-            <h1>85% of youth in prison</h1>
-          </div>
-          <div class="col-sm-2">
-            <%= image_tag 'behave.png', class: 'img-responsive' %>
-            <h1>85% of children with behavioral disorders</h1>
-          </div>
-          <div class="col-sm-2">
-            <%= image_tag 'drugs.png', class: 'img-responsive' %>
-            <h1>75% of adolescents in substance-abuse treatment centers</h1>
-          </div>
-          <div class="col-sm-2">
-            <%= image_tag 'broke.png', class: 'img-responsive' %>
-            <h1>71% of all high school dropouts</h1>
-          </div>
-          <div class="col-sm-2">
-            <%= image_tag 'jail.png', class: 'img-responsive' %>
-            <h1>70% of adults serving long-term prison sentences</h1>
-          </div>
+      <div class="col-xs-12">
+        <p>Join us for the 2nd Annual</p>
+        <h1>MEN OF DORAL BBQ CHALLENGE</h1>
+        <hr>
+      </div>
+    </div>
+    <div class="space50"></div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <p class="loco">Come join us Sarurday, June 13th for an unforgettable day of food, fun and grillin'! Calling all fathers and sons to a real man's competition. Event registration attached and information attached.</p>
+          <div class="space50"></div>
+          <a href= "https://s3-us-west-2.amazonaws.com/men-of-doral/BBQ+challenge+rules.pdf" target="_blank" class="btn btn-cool">Download Rules</a><a href="#getstarted" class="btn btn-cool" style="margin-right:0px;">Get Started Now</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
+<section class="registration" id="getstarted" >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Advertisement Packages</h1>
+        <p>Choose from three availible options</p>
+        <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+          <%= content_tag(:strong, 'Package') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="advertisement_package" tabindex="-1" role="dialog" aria-labelledby="advertisement_package_form" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="advertisement_package_form">Adverisment Package</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "advertistment_packages/form", object: AdvertistmentPackage.new %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <section class="contact">
   <div class="container-fluid">
@@ -88,7 +103,7 @@
           <p>For more information about this event please fill out form below.</p>
           <%= simple_form_for Contact.new, remote: true, html: {class: "animated"} do |f| %>
             <%= f.error_notification %>
-        
+
             <div class="col-sm-4 col-sm-offset-4">
               <div class="row">
                 <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control add-top-margin'} %>
@@ -134,24 +149,6 @@
   </div>
 </section>
 
-<section class="advertisement-packages">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="center">
-        <div class="row">
-          <h2>Sign Up for a Advertisement Package</h2>
-          <p>Choose from three availible options</p>
-        </div>
-        <div class="row">
-          <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#advertisement_package"}) do %>
-            <%= content_tag(:strong, 'Package') %>
-          <% end %>
-      </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- Modal -->
 <div class="modal fade" id="team_registration" tabindex="-1" role="dialog" aria-labelledby="team_registration_form" aria-hidden="true">
@@ -168,28 +165,19 @@
   </div>
 </div>
 
-<div class="modal fade" id="advertisement_package" tabindex="-1" role="dialog" aria-labelledby="advertisement_package_form" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="advertisement_package_form">Adverisment Package</h4>
-      </div>
-      <div class="modal-body">
-        <%= render partial: "advertistment_packages/form", object: AdvertistmentPackage.new %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 <script type="text/javascript">
 // Contact Form Validations
   $('#new_newsletter').validate()
-  $("#new_contact").validate()
   $("#new_team_registration").validate()
   $("#new_advertistment_package").validate()
+  $("#new_contact").validate({
+    rules: {
+      "contact[name]": {required: true},
+      "contact[email]": {required: true, email: true},
+      "contact[phone_number]": {required: true, minlength: 10}
+    }
+  });
 </script>
 
 <script type="text/javascript">
@@ -211,4 +199,3 @@
     $(this).addClass('shake');
   })
 </script>
-
