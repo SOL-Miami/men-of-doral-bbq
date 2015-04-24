@@ -70,9 +70,75 @@
       <div class="col-xs-12">
         <h1>Advertisement Packages</h1>
         <p>Choose from three availible options</p>
-        <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#advertisement_package"}) do %>
-          <%= content_tag(:strong, 'Package') %>
-        <% end %>
+        <hr>
+      </div>
+    </div>
+    <div class="space50"></div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-sm-4">
+          <%= image_tag 'logo.png', class: 'logos' %>
+          <h3>Platinum | Underwriter</h3>
+          <p>$5000</p>
+          <hr>
+          <div class="min">
+            <ul>
+              <li>Radio commercial on Radio Luz and Radio Paz</li>
+              <li>Newsletter AD for 2 months prior to event-Email Blast to City of Doral data base</li>
+              <li>Logo</li>
+              <li>2 banner (2x4)</li>
+              <li>Free registration for (1 team) at the event</li>
+              <li>LOGO on all marketing materials; including giveaways with your promotional items!</li>
+              <li>Digital Event Platform - Website, Facebook, Twitter, Instagram</li>
+              <li>Mention on Event commercial on Radio Luz and Radio Paz</li>
+              <li>Logo on event promotional poster and Flyers</li>
+            </ul>
+          </div>
+
+          <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+            <%= content_tag(:strong, 'Package') %>
+          <% end %>
+        </div>
+        <div class="col-sm-4">
+          <%= image_tag 'Gold.png', class: 'logos' %>
+          <h3>Gold</h3>
+          <p>$2500</p>
+          <hr>
+          <div class="min">
+            <ul>
+              <li>Radio commercial on Radio Luz and Radio Paz</li>
+              <li>Newsletter AD for one month but logo on 2 months prior to event-Email Blast to City of Doral data base</li>
+              <li>Logo</li>
+              <li>2 banner (2x4)</li>
+              <li>Free registration for (1 team) at the event</li>
+              <li>Digital Event Platform- Website , Facebook , Twitter , Instagram</li>
+              <li>Mention on Event commercial on Radio Luz and Radio Paz</li>
+              <li>Logo on event promotional poster and Flyers</li>
+            </ul>
+          </div>
+          <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+            <%= content_tag(:strong, 'Package') %>
+          <% end %>
+        </div>
+        <div class="col-sm-4">
+          <%= image_tag 'Silver.png', class: 'logos' %>
+          <h3>Silver</h3>
+          <p>$1500</p>
+          <hr>
+          <div class="min">
+            <ul>
+              <li>Logo</li>
+              <li>1 banner 2x4</li>
+              <li>Logo on Newsletter 2 months prior to event-Email Blast to City of Doral data base</li>
+              <li>Mention on Event commercial on Radio Luz and Radio Paz</li>
+              <li>Logo on event promotional poster and Flyers</li>
+              <li>Free registration for (1 team) at the event</li>
+            </ul>
+          </div>
+          <%= button_tag(type: 'button', class: "btn btn-default", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+            <%= content_tag(:strong, 'Package') %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
