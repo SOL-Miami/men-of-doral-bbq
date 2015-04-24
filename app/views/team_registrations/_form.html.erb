@@ -1,56 +1,44 @@
 <%= simple_form_for TeamRegistration.new, remote: true do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <div class="row">
-      <div class="col-sm-6">
-        <%= f.input :team_name, label: false, placeholder: "Team Name", input_html: {class: 'form-control add-top-margin'} %>
-      </div>
-      <div class="col-sm-6">
-        <%= f.input :team_members, collection: 1..4, as: :radio_buttons, :item_wrapper_class => 'inline add-top-margin' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6">
-        <%= f.input :captain_name, label: false, placeholder: "Captain Name", input_html: {class: 'form-control add-top-margin'} %>
-      </div>
-      <div class="col-sm-6">
-        <%= f.input :captain_email, label: false, placeholder: "Captain Email", input_html: {class: 'form-control add-top-margin'} %>
-       </div>
-    </div>
-  </div>
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <input type="hidden" id="stripe_pub" name="stripe" size="20" value="<%= ENV["stripe_public_key"] %>" /> 
   <div class="row">
-    <div class="col-xs-12">
-      <%= text_field_tag :card_number, nil, 
-                          name: nil, 
-                          placeholder: "Credit Card Number", 
-                          :class=> "form-control input-md-3 add-top-margin" %>
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-xs-4 field">
-        <%= select_month nil, {add_month_numbers: true}, 
-                              {:class=> "datepicker form-control input-md-1 add-top-margin", 
-                               name: nil, 
-                               id: "card_month", 
+    <div class="col-xs-10 col-xs-offset-1">
+      <%= f.input :team_name, label: false, placeholder: "Team Name", input_html: {class: 'form-control'} %>
+      <br>
+      <%= f.input :captain_name, label: false, placeholder: "Captain Name", input_html: {class: 'form-control'} %>
+      <br>
+      <%= f.input :captain_email, label: false, placeholder: "Captain Email", input_html: {class: 'form-control'} %>
+      <br>
+      <p>How Many Team Members?</p>
+      <%= f.input :team_members, collection: 1..4, as: :radio_buttons, label: false %>
+      <br>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input type="hidden" id="stripe_pub" name="stripe" size="20" value="<%= ENV["stripe_public_key"] %>" />
+      <%= text_field_tag :card_number, nil,
+                          name: nil,
+                          placeholder: "Credit Card Number",
+                          :class=> "form-control" %>
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+        <%= select_month nil, {add_month_numbers: true},
+                              {:class=> "datepicker form-control",
+                               name: nil,
+                               id: "card_month",
                                label: false} %>
+        </div>
+        <div class="col-sm-3">
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15},
+                               {:class=> "datepicker form-control",
+                                name: nil,
+                                id: "card_year"} %>
+        </div>
+        <div class="col-sm-3">
+          <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV",class: "form-control" %>
+        </div>
       </div>
-      <div class="col-xs-3 field">
-        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, 
-                             {:class=> "datepicker form-control input-md-1 add-top-margin", 
-                              name: nil, 
-                              id: "card_year"} %>
-      </div>
-      <div class="col-xs-5 field">
-        <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV",class: "form-control input-md-3 add-top-margin" %>
-      </div>
-    </div>
-  <br>
-  <div class="row">
-    <div class="col-xs-12">
+      <br>
       <a id="stripe-submit" class="btn btn-lg btn-primary btn-block form-signin-btn btn-default" onclick="submitStripe();">Submit</a>
+      <br>
     </div>
   </div>
 <% end %>
@@ -61,7 +49,7 @@
   var stripeResponseHandler = function(status, response) {
   var token;
   var form = $('#stripe-submit').closest('form');
-    
+
     if (response.error) {
       $(".modal-body #stripe_error").text(response.error.message);
       $(".modal-body #stripe-submit").prop("disabled", false).removeClass('btn-warning disabled').text('Submit Again');
@@ -69,7 +57,7 @@
       token = response.id;
       console.log(token);
       form.append($("<input type=\"hidden\" name=\"stripeToken\" />").val(token));
-      
+
       form.get(0).submit();
     }
   };
@@ -95,6 +83,3 @@
     $(this).prepend('<span class=\'glyphicon glyphicon-refresh glyphicon-refresh-animate\'></span>');
   });
 </script>
-
-
-
