@@ -1,6 +1,6 @@
 <%= image_tag 'logo.png', class: 'logos' %>
 <br>
-<%= simple_form_for(AdvertistmentPackage.new) do |f| %>
+<%= simple_form_for AdvertistmentPackage.new, remote: true do |f| %>
   <%= f.error_notification %>
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
@@ -45,7 +45,7 @@
                                  id: "card_year_a"} %>
         </div>
         <div class="col-sm-3">
-          <%= text_field_tag :card_code, nil, name: nil, placeholder: "CVV",class: "form-control" %>
+          <%= text_field_tag :card_code_a, nil, name: nil, placeholder: "CVV",class: "form-control" %>
         </div>
       </div>
       <br>
