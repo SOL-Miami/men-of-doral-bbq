@@ -5,7 +5,7 @@ class AdvertistmentPackagesController < InheritedResources::Base
     @advertisment_package = AdvertistmentPackage.new(advertistment_package_params)
     respond_to do |format|
       if @advertisment_package.save
-        format.html { redirect_to page_path('thank_you'), notice: 'Advertisment Package was successfully created.' }
+        format.html { redirect_to page_path('thank_you') }
         format.json { render action: 'show', status: :created, location: @advertisment_package }
         format.js   { render :nothing => true, status: :created, location: @advertisment_package }
       else

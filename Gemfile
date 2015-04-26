@@ -30,7 +30,6 @@ gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'master'
 
 gem "figaro"
 gem 'ckeditor', github: 'galetahub/ckeditor'
-gem 'will_paginate', '~> 3.0.6'
 gem 'simple_form'
 gem 'country_select', github: 'stefanpenner/country_select'
 gem 'arbre', '~> 1.0.3'
