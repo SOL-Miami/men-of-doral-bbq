@@ -21,6 +21,11 @@ footer {
     font-weight: 300;
     color: white;
   }
+  @media (max-width: 736px) {
+    .pull-left{float:none !important;}
+    .pull-right{float:none !important;}
+    p{text-align:center;}
+  }
 }
 .form-control:focus {
   border-color: #5C2E23;
@@ -261,5 +266,6 @@ footer {
     p {
       font-size: 18px;
     }
+    margin-bottom: 80px;
   }
 }
