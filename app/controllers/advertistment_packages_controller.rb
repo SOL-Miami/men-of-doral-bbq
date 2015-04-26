@@ -15,12 +15,22 @@ class AdvertistmentPackagesController < InheritedResources::Base
       end
     end
 
+    package = params['advertistment_package']['package']
+    
+    if package == "platinum"
+      amount = ENV["stripe_platinum_package"]
+    elsif package == "gold"
+      amount = ENV["stripe_gold_package"]
+    elsif package == "silver"
+      amount = ENV["stripe_silver_package"]
+    end
+
     Stripe.api_key = ENV["stripe_secret_key"]
     token = params[:stripeToken]
     email = params['advertistment_package']['email']
     begin
       charge = Stripe::Charge.create(
-        :amount => params['advertistment_package']['package'],
+        :amount => amount,
         :currency => "usd",
         :card => token,
         :description => "Advertistment Package",

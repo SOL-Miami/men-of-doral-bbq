@@ -19,8 +19,9 @@
       <br>
       <%= f.input :phone, label: false, placeholder: "Phone Number", input_html: {class: 'form-control'} %>
       <br>
-      <%= f.input :package, label: "Packages",collection: AdvertistmentPackage::PACKAGES, as: :radio_buttons %>
-
+      <%#= f.input :package, label: "Packages",collection: AdvertistmentPackage::PACKAGES %>
+      <input type="hidden" value="" name="advertistment_package[package]" id="advertistment_package_package" >
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       <input type="hidden" id="stripe_pub" name="stripe" size="20" value="<%= ENV["stripe_public_key"] %>" />
       <div id="stripe_error_a"></div>
@@ -90,9 +91,9 @@
 
 
 <script type="text/javascript">
-  // $('#stripe-submit_a').click(function(e) {
-  //   $(this).addClass('btn btn-lg btn-warning disabled');
-  //   $(this).text('Processing ...');
-  //   $(this).prepend('<span class=\'glyphicon glyphicon-refresh glyphicon-refresh-animate\'></span>');
-  // });
+  $('#stripe-submit_a').click(function(e) {
+    $(this).addClass('btn btn-lg btn-warning disabled');
+    $(this).text('Processing ...');
+    $(this).prepend('<span class=\'glyphicon glyphicon-refresh glyphicon-refresh-animate\'></span>');
+  });
 </script>

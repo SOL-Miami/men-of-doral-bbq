@@ -97,7 +97,7 @@
             </ul>
           </div>
 
-          <%= button_tag(type: 'button', class: "btn btn-default top", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+          <%= button_tag(type: 'button', class: "btn btn-default top", id:"package-platinum", data: {toggle:"modal", target:"#advertisement_package"}) do %>
             <%= content_tag(:strong, 'Package') %>
           <% end %>
         </div>
@@ -118,7 +118,7 @@
               <li>Logo on event promotional poster and Flyers</li>
             </ul>
           </div>
-          <%= button_tag(type: 'button', class: "btn btn-default top", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+          <%= button_tag(type: 'button', class: "btn btn-default top", id:"package-gold", data: {toggle:"modal", target:"#advertisement_package"}) do %>
             <%= content_tag(:strong, 'Package') %>
           <% end %>
         </div>
@@ -137,7 +137,7 @@
               <li>Free registration for (1 team) at the event</li>
             </ul>
           </div>
-          <%= button_tag(type: 'button', class: "btn btn-default top", data: {toggle:"modal", target:"#advertisement_package"}) do %>
+          <%= button_tag(type: 'button', class: "btn btn-default top", id:"package-silver", data: {toggle:"modal", target:"#advertisement_package"}) do %>
             <%= content_tag(:strong, 'Package') %>
           <% end %>
         </div>
@@ -278,5 +278,19 @@
   $('#person_create_form_submit').closest('form').on('ajax:error', function() {
     $('.contact').prepend("<div><h4>Please check your submission.</h4></div>").css('color','red')
     $(this).addClass('shake');
+  })
+</script>
+
+<script type="text/javascript">
+  $('#package-platinum').on('click',function(){
+    $('#advertistment_package_package').val('platinum');
+  })
+
+  $('#package-gold').on('click',function(){
+    $('#advertistment_package_package').val('gold');
+  })
+
+  $('#package-silver').on('click',function(){
+    $('#advertistment_package_package').val('silver');
   })
 </script>
