@@ -46,7 +46,7 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   font-family: 'Lato', sans-serif;
   padding: 10px 20px;
   background: transparent;
-  margin-right: 20px;
+  margin: 20px;
   transition: .2s all;
   &:hover {
     background: rgb(214, 25, 33);
@@ -191,6 +191,14 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   .min {
     min-height: 300px;
   }
+  @media (max-width: 1024px) {
+    .min {
+      min-height: 0px;
+    }
+    .top {
+      margin: 30px 0 50px;
+    }
+  }
 }
 
 .team-registration {
@@ -234,5 +242,9 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   }
   p {
     font-weight: 300;
+  }
+  hr {
+    border-top: 3px solid #5C2E23;
+    width: 150px;
   }
 }
