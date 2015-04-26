@@ -8,6 +8,7 @@ $gray: #58585a;
 
 body {
   overflow-x: hidden;
+  max-width: 100%;
 }
 h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
 .space50{
@@ -41,6 +42,11 @@ footer {
     background: rgb(224, 215, 198);
     border: #e0d7c6;
     border: 1px solid #e0d7c6;
+  }
+}
+.name {
+  @media (max-width: 736px) {
+    padding-bottom: 15px;
   }
 }
 .radio {

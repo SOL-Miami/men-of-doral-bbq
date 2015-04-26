@@ -26,15 +26,18 @@
                                name: nil,
                                id: "card_month_b",
                                label: false} %>
+                               <br>
         </div>
         <div class="col-sm-3">
           <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15},
                                {:class=> "datepicker form-control",
                                 name: nil,
                                 id: "card_year_b"} %>
+                                <br>
         </div>
         <div class="col-sm-3">
           <%= text_field_tag :card_code_b, nil, name: nil, placeholder: "CVV",class: "form-control" %>
+          <br>
         </div>
       </div>
       <br>

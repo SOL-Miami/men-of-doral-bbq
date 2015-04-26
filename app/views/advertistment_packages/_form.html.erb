@@ -7,7 +7,7 @@
       <%= f.input :company, label: false, placeholder: "Company Name", input_html: {class: 'form-control'} %>
       <br>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 name">
           <%= f.input :first_name, label: false, placeholder: "First Name", input_html: {class: 'form-control'} %>
         </div>
         <div class="col-sm-6">
@@ -38,12 +38,14 @@
                                  id: "card_month_a",
 
                                  label: false} %>
+                                 <br>
         </div>
         <div class="col-sm-3">
           <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15},
                                 {:class=> "datepicker form-control",
                                  name: nil,
                                  id: "card_year_a"} %>
+                                 <br>
         </div>
         <div class="col-sm-3">
           <%= text_field_tag :card_code_a, nil, name: nil, placeholder: "CVV",class: "form-control" %>
