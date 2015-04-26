@@ -13,6 +13,15 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
 .space50{
   margin-top: 50px;
 }
+
+footer {
+  background: black;
+  padding: 20px 0;
+  p {
+    font-weight: 300;
+    color: white;
+  }
+}
 .form-control:focus {
   border-color: #5C2E23;
   outline: 0;
@@ -234,7 +243,7 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
 
 .contact {
   text-align: center;
-  padding: 35px 0 55px;
+  padding: 55px 0 75px;
   background: white;
   h2 {
     font-weight: 700;
@@ -246,5 +255,11 @@ h1,h2,h3,p,ul,li {font-family: 'Lato', sans-serif;color:$brown;}
   hr {
     border-top: 3px solid #5C2E23;
     width: 150px;
+  }
+  .contact-info {
+    text-align: left;
+    p {
+      font-size: 18px;
+    }
   }
 }

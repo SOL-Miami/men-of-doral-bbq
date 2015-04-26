@@ -171,34 +171,47 @@
 
 <section class="contact">
   <div class="container-fluid">
-    <div class="row">
-    <div class="contact_form_shown">
-      <div class="col-xs-12">
-        <h2>Contact Us</h2>
-        <p>For more information about this event please fill out form below.</p>
-        <hr>
-      </div>
-      <br>
+    <div class="col-sm-10 col-sm-offset-1">
       <div class="row">
-        <%= simple_form_for Contact.new, remote: true, html: {class: "animated"} do |f| %>
-          <%= f.error_notification %>
-          <div class="col-sm-4 col-sm-offset-4">
-              <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control'} %>
-              <br>
-              <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
-              <br>
-              <%= f.input :phone_number, label: false, placeholder: "Phone Number", input_html: {class: 'form-control'} %>
-              <br>
-              <%= f.input :message, label: false, placeholder: "Message", input_html: {class: 'form-control'}  %>
-              <br>
-              <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit", class: 'btn btn-default'  %>
+        <div class="col-sm-5 col-sm-offset-1">
+          <div class="contact-info">
+            <div class="space50"></div>
+            <p><strong>For more information please contact:</strong></p>
+            <p>Rosemarie Caro<br>
+            <i class="fa fa-phone"></i> 305.986.1372<br>
+            <i class="fa fa-envelope-o"></i> <a mailto="info@whatisaman.com">info@whatisaman.com</a></p>
+            <br>
+            <p><strong>Send Mail To:</strong></p>
+            <p>World-Changing Enterprises<br>
+              P.O. Box 654338<br>
+              Miami, FL 33265
+            </p>
           </div>
-        <% end %>
+        </div>
+        <div class="col-sm-5">
+          <div class="contact_form_shown">
+            <h2>Contact Us</h2>
+            <p>For more information about this event please fill out form below.</p>
+            <hr>
+            <%= simple_form_for Contact.new, remote: true, html: {class: "animated"} do |f| %>
+              <%= f.error_notification %>
+                <%= f.input :name, label: false, placeholder: "Name", input_html: {class: 'form-control'} %>
+                <br>
+                <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+                <br>
+                <%= f.input :phone_number, label: false, placeholder: "Phone Number", input_html: {class: 'form-control'} %>
+                <br>
+                <%= f.input :message, label: false, placeholder: "Message", input_html: {class: 'form-control'}  %>
+                <br>
+                <%= f.button :submit, :name => 'commit', :id=>"person_create_form_submit", class: 'btn btn-default'  %>
+            <% end %>
+          </div>
+          <div class="contact_form_hidden" style="display:none;">
+            <h2>WE HAVE RECEIVED YOUR MESSAGE</h2>
+            <p>A REPRESENTATIVE WILL CONTACT YOU SHORTLY</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="contact_form_hidden" style="display:none;">
-      <h2>WE HAVE RECEIVED YOUR MESSAGE</h2><p>A REPRESENTATIVE WILL CONTACT YOU SHORTLY</p>
-    </div>
     </div>
   </div>
 </section>
