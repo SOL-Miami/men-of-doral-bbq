@@ -1,13 +1,20 @@
 <section class="main-header">
-  <div class="hero">
-    <%= image_tag 'logo.png', class: 'img-responsive' %>
-    <br>
-    <hr>
-    <h1>Brothers, Fathers<br>Sons and Friends</h1>
-    <h3>Men making a difference in their community.</h3>
-    <hr>
-    <br>
-    <a href="#next"><p>Learn More</p><i class="fa fa-angle-down fa-3x"></i></a>
+  <div class="white-layer"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+        <div class="box">
+          <%= image_tag 'logo.png', class: 'img-responsive' %>
+          <hr>
+          <h1>Brothers, Fathers<br>Sons and Friends</h1>
+          <h3>Men making a difference in their community.</h3>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll">
+    <a href="#next"><p>Learn More</p><i class="fa fa-angle-down fa-3x" style="margin-top: -10px;"></i></a>
   </div>
 </section>
 
@@ -284,16 +291,16 @@
 <script type="text/javascript">
   $('#package-platinum').on('click',function(){
     $('#advertistment_package_package').val('platinum');
-    $('#advertisement_package_form').text("Platinum | Underwriter Package - $5,000") 
+    $('#advertisement_package_form').text("Platinum | Underwriter Package - $5,000")
   })
 
   $('#package-gold').on('click',function(){
     $('#advertistment_package_package').val('gold');
-    $('#advertisement_package_form').text("Gold Package - $2,500") 
+    $('#advertisement_package_form').text("Gold Package - $2,500")
   })
 
   $('#package-silver').on('click',function(){
     $('#advertistment_package_package').val('silver');
-    $('#advertisement_package_form').text("Silver Package - $1,500") 
+    $('#advertisement_package_form').text("Silver Package - $1,500")
   })
 </script>
