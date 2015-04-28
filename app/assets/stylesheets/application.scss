@@ -101,12 +101,6 @@ footer {
   min-height:100vh;
   position: relative;
   background-position: 100%;
-  @media (max-height: 414px) {
-    padding-bottom: 200px;
-  }
-  @media (max-height: 375px) {
-    padding-bottom: 200px;
-  }
   .white-layer {
     width: 50%;
     height: 100%;
@@ -167,6 +161,12 @@ footer {
     right: 0;
     margin: 0 auto;
     bottom: 0;
+    @media (max-height: 414px) {
+      padding-top: 200px;
+    }
+    @media (max-height: 375px) {
+      padding-top: 200px;
+    }
     p, i {
       margin: 0;
       color: $brown;
