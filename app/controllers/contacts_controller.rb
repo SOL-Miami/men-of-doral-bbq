@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
         format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
         format.json { render action: 'show', status: :created, location: @contact }
         # added:
-        format.js   { render :nothing => true, status: :created, location: @contact }
+        format.js   { render :nothing => true, status: :created }
         ContactMailer.contact_email(@contact).deliver_now
       else
         format.html { render action: 'new' }

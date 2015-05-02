@@ -8,6 +8,7 @@ class TeamRegistrationsController < InheritedResources::Base
         format.html { redirect_to page_path('thank_you') }
         format.json { render action: 'show', status: :created, location: @team_registration }
         format.js   { render :nothing => true, status: :created, location: @team_registration }
+        ContactMailer.team_registration_email(@team_registration).deliver_now
       else
         format.html { render action: 'new' }
         format.json { render json: @team_registration.errors, status: :unprocessable_entity }

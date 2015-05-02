@@ -8,6 +8,7 @@ class AdvertistmentPackagesController < InheritedResources::Base
         format.html { redirect_to page_path('thank_you') }
         format.json { render action: 'show', status: :created, location: @advertisment_package }
         format.js   { render :nothing => true, status: :created, location: @advertisment_package }
+        ContactMailer.advertisment_package_email(@advertisment_package).deliver_now
       else
         format.html { render action: 'new' }
         format.json { render json: @advertisment_package.errors, status: :unprocessable_entity }
