@@ -29,12 +29,14 @@ class AdvertistmentPackagesController < InheritedResources::Base
     Stripe.api_key = ENV["stripe_secret_key"]
     token = params[:stripeToken]
     email = params['advertistment_package']['email']
+    package = params['advertistment_package']['package']
+    company = params['advertistment_package']['company']
     begin
       charge = Stripe::Charge.create(
         :amount => amount,
         :currency => "usd",
         :card => token,
-        :description => "Advertistment Package",
+        :description => "#{package.capitalize} Packate for #{company}",
         :receipt_email => email
       )
     rescue Stripe::CardError => e
