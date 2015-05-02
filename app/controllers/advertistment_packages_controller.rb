@@ -36,7 +36,7 @@ class AdvertistmentPackagesController < InheritedResources::Base
         :amount => amount,
         :currency => "usd",
         :card => token,
-        :description => "#{package.capitalize} Packate for #{company}",
+        :description => "#{package.capitalize} Package for #{company}",
         :receipt_email => email
       )
     rescue Stripe::CardError => e
