@@ -8,6 +8,7 @@ class AdvertistmentPackagesController < InheritedResources::Base
         format.html { redirect_to page_path('thank_you') }
         format.json { render action: 'show', status: :created, location: @advertisment_package }
         format.js   { render :nothing => true, status: :created, location: @advertisment_package }
+        ContactMailer.advertisment_package_email(@advertisment_package).deliver_now
       else
         format.html { render action: 'new' }
         format.json { render json: @advertisment_package.errors, status: :unprocessable_entity }
@@ -28,12 +29,14 @@ class AdvertistmentPackagesController < InheritedResources::Base
     Stripe.api_key = ENV["stripe_secret_key"]
     token = params[:stripeToken]
     email = params['advertistment_package']['email']
+    package = params['advertistment_package']['package']
+    company = params['advertistment_package']['company']
     begin
       charge = Stripe::Charge.create(
         :amount => amount,
         :currency => "usd",
         :card => token,
-        :description => "Advertistment Package",
+        :description => "#{package.capitalize} Package for #{company}",
         :receipt_email => email
       )
     rescue Stripe::CardError => e

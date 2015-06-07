@@ -28,7 +28,7 @@ class NewslettersController < ApplicationController
         format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
         format.json { render action: 'show', status: :created, location: @newsletter }
         # added:
-        format.js   { render :nothing => true }
+        format.js   { render :nothing => true, status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
