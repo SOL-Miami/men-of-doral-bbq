@@ -18,4 +18,12 @@ class ContactMailer < ApplicationMailer
     mail(to: "info@whatisaman.com", subject: 'Advertisement Package Email')
   end
 
+  def advertisment_package_email(contact)
+    @contact = contact
+
+    @url  = 'http://bbq.whatisaman.com/'
+    mail(to: @contact.email, subject: 'Mens of Doral BBQ Challenge')
+  end
+
+
 end
