@@ -1,5 +1,7 @@
 class ContactMailer < ApplicationMailer
 
+  layout false
+
   def contact_email(contact)
     @contact = contact
     @url  = 'http://bbq.whatisaman.com/'
@@ -24,6 +26,5 @@ class ContactMailer < ApplicationMailer
     @url  = 'http://bbq.whatisaman.com/'
     mail(to: @contact.email, subject: 'Mens of Doral BBQ Challenge')
   end
-
 
 end
