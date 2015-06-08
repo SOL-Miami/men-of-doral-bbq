@@ -24,6 +24,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     @url  = 'http://bbq.whatisaman.com/'
     attachments.inline['logo.png'] = File.read('app/assets/images/logo.png')
+    attachments.inline['cutlery.png'] = File.read('app/assets/images/cutlery.png')
     mail(to: @contact.email, subject: 'Mens of Doral BBQ Challenge')
   end
   # ContactMailer.newsletter_1_email(user).deliver_now

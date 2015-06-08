@@ -46,7 +46,7 @@ body {
             <tr>
               <td bgcolor="#FFFFFF" style="width: 320px; padding:20px 0 15px 20px; background:#ffffff; background-color:rgba(255,0,255,0);;" valign="middle">
                 <p style="padding:0; margin:0; line-height:160%; font-size:18px; text-align: center;">
-                  <img alt="BBQ Newsletter" height="210" src="./index_files/bbq.png" style="padding:0;border:0;" width="300">
+                  <%= image_tag(attachments['logo.png'].url, style:"padding:0;border:0;",width:"300")%>
                 </p>
               </td>
               
@@ -73,7 +73,10 @@ body {
 
           <br><br>
           <strong>Wives, daughters, sisters, and aunts are invited to join in the festivities and fellowship after 12 noon.</strong>
-          <br><br><a style="text-decoration:none; color: #D71921;" href="file:///Users/anuvis/Desktop/index.html#"><img alt="»" height="13" src="./index_files/cutlery.png" vspace="0" style="border:0;" width="12">&nbsp;Register Now!</a>
+          <br><br>
+          <a style="text-decoration:none; color: #D71921;" href="www.bbq.whatisaman.com">
+            <%= image_tag(attachments['cutlery.png'].url, vspace: "0", style: 'border:0;', width: '12')%> &nbsp;Register Now!
+          </a>
         </td>
       </tr>
       <tr>
@@ -92,8 +95,8 @@ body {
             <tr>
               <td style="width:340px; padding:0 20px 0 0;">
                 2029 NW 87th Ave, Doral, FL 33172<br>
-                <a style="color: #D71921; text-decoration:underline;" href="file:///Users/anuvis/Desktop/index.html#">www.bbq.whatisaman.com</a> 
-                | <a style="color: #D71921; text-decoration:underline;" href="file:///Users/anuvis/Desktop/index.html#">info@whatisaman.com</a><br>
+                <a style="color: #D71921; text-decoration:underline;" href="www.bbq.whatisaman.com">www.bbq.whatisaman.com</a> 
+                | <a style="color: #D71921; text-decoration:underline;" href="info@whatisaman.com">info@whatisaman.com</a><br>
                 Rosy: 305.986.1372
               </td>
               <td valign="middle" align="center" style="text-align:center; width:240px;">
@@ -104,7 +107,8 @@ body {
             </tr>
             <tr>
               <td style="padding:20px 0 0 0;" colspan="2">
-                You are currently signed up to this newsletters as: <a style="color: #D71921; text-decoration:underline;" href="file:///Users/anuvis/Desktop/index.html#"><%= @contact.email %></a>. To unsubscribe please email a request<br>Copyright © 2015
+                You are currently signed up to this newsletters as: <a style="color: #D71921; text-decoration:underline;" href="#"><%= @contact.email %></a>.<br>
+                To unsubscribe please email a request<br>Copyright © 2015
                 Spring Of Life Fellowship.
               </td>
             </tr>
