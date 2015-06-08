@@ -12,4 +12,13 @@ namespace :db do
       end
     end
   end
+
+  desc 'run through list'
+
+    task :email_list, [:num] => :environment do |t, args|
+      Contact.order(:id).limit(250).offset(args.message.to_i*250).each do |contact| 
+        ContactMailer.newsletter_1_email(contact).deliver_now
+      end
+    end
+
 end
