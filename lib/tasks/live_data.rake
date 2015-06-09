@@ -15,10 +15,19 @@ namespace :db do
 
   desc 'run through list'
 
-    task :email_list, [:num] => :environment do |t, args|
-      Contact.order(:id).limit(250).offset(args.message.to_i*250).each do |contact| 
+    task :email_list1, [:num] => :environment do |t, args|
+      Contact.order(:id).limit(1000).offset(args.message.to_i*1250).each do |contact| 
         ContactMailer.newsletter_1_email(contact).deliver_now
       end
     end
-
+    task :email_list2, [:num] => :environment do |t, args|
+      Contact.order(:id).limit(1000).offset(args.message.to_i*2250).each do |contact| 
+        ContactMailer.newsletter_1_email(contact).deliver_now
+      end
+    end
+    task :email_list3, [:num] => :environment do |t, args|
+      Contact.order(:id).limit(1000).offset(args.message.to_i*3250).each do |contact| 
+        ContactMailer.newsletter_1_email(contact).deliver_now
+      end
+    end
 end
