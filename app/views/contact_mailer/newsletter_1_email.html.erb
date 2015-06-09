@@ -108,9 +108,11 @@ body {
             </tr>
             <tr>
               <td style="padding:20px 0 0 0;" colspan="2">
-                You are currently signed up to this newsletters as: <a style="color: #D71921; text-decoration:underline;" href="#"><%= @contact.email %></a>.<br>
-                To unsubscribe please email a request<br>Copyright © 2015
-                Spring Of Life Fellowship.
+                This email was obtained via the City of Doral or an affiliated contact associated with.<br>
+                You are currently signed up to this newsletters as: <%= @contact.email %><br>  
+                Please click here to <%= link_to "Unsubscribe", mailkick_unsubscribe_url %>.<br><br>
+                Copyright © 2015<br>
+                Men Of Doral BBQ Challenge.
               </td>
             </tr>
           </tbody></table>
