@@ -1,9 +1,12 @@
 SMTP_SETTINGS = {
-  address: ENV.fetch("SMTP_ADDRESS"),
+  address: ENV.fetch("MAILGUN_SMTP_SERVER"),
   authentication: :plain,
-  domain: ENV.fetch("SMTP_DOMAIN"),
+  domain: ENV.fetch("MAILGUN_DOMAIN"),
   enable_starttls_auto: true,
-  password: ENV.fetch("MANDRILL_APIKEY"),
-  port: "587",
-  user_name: ENV.fetch("MANDRILL_USERNAME")
+  password: ENV.fetch("MAILGUN_SMTP_PASSWORD"),
+  port: ENV.fetch("MAILGUN_SMTP_PORT"),
+  user_name: ENV.fetch("MAILGUN_SMTP_LOGIN")
 }
+
+
+
